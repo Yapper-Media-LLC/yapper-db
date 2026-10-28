@@ -1,0 +1,6 @@
+-- Boosts: pay to rank higher in the main Discovery list (applied live via MCP).
+-- server_promotions.kind = 'promote' (Promoted row) | 'boost' (ranking). Boosts stack, 7 days each.
+-- New: active_boosts(sid), discover_servers_v3 (boosted first, then members), discovery_rank(sid), admin_boost_server(sid, days).
+-- promoted_servers and admin_promote_server now only look at kind = 'promote'.
+-- Stripe: client_reference_id 'boost_<server id>' (see app/api/stripe/webhook).
+-- Full SQL as applied: see the 086_server_boosts migration in the Supabase dashboard (Database > Migrations).

@@ -1,0 +1,2 @@
+-- Applied live via MCP. user_warnings.removed_at / removed_by; mod_remove_warning(wid): moderators remove their own
+-- warnings, admins any; logged as 'unwarn'; the person stops seeing it. mod_user_case lists only standing warnings.

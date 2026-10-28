@@ -1,0 +1,6 @@
+-- Applied live via MCP. Community bot directory.
+-- bots.category (moderation, fun, utility, games, music, economy, social, ai, other; default other), readable by
+-- authenticated, set by the owner through PATCH /api/bots { category }.
+-- bot_directory(q, cat, sort 'popular'|'new'|'name'): public + verified bots with owner, Plus, server and command
+-- counts, online (polled in the last 90 s or an event in 5 min), up to 25 commands. Search covers names,
+-- descriptions and command names.

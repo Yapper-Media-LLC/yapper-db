@@ -1,0 +1,6 @@
+-- Applied live via MCP. Caps so Discovery stays mostly organic:
+--   promo_slots() = 6 promotions running at once (row shows 3); next_promo_start() queues the rest.
+--   boost_lifts() = 6 boosted servers lifted, at positions 2, 7, 12, 17, 22, 27 (discovery_order); the rest by members.
+--   boost_max() = 5 boosts per server running at once (extra ones queue).
+-- book_promotion(sid, kind, source, event, by, days) is the only way rows are created (service_role + admin RPCs).
+-- discover_servers_v3, discovery_rank, discovery_rank_boosted now read discovery_order(q, extra). promo_availability(sid) for the UI.

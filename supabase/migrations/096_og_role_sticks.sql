@@ -1,0 +1,3 @@
+-- Applied live via MCP. og_on_join trigger (after insert on server_members): joining HQ gives back the OG role to
+-- accounts created before 2026-10-14 09:21:56 UTC (the OG cutoff), so leaving and rejoining no longer loses it.
+-- Restored OG for the 16 HQ members who had lost it that way.

@@ -1,0 +1,3 @@
+-- Applied live via MCP. can_access_channel: Yapper staff (admins + moderators) also see role-locked channels
+-- in servers they're members of. Tickets and people-only private channels (no channel_roles) stay private.
+-- Adds to the existing rules: ... or (public.is_staff() and c.ticket_by is null and exists (select 1 from public.channel_roles cr where cr.channel_id = c.id))

@@ -1,0 +1,3 @@
+-- Applied live via MCP (boost_skips_member_minimum_v2), on top of the other session's discovery_counts (servers.member_count).
+-- discovery_order_m: unboosted servers still need member_count >= 5 to be listed; a server with a live boost
+-- (or the "what if" server passed as extra) is listed whatever its size. Keep this when editing discovery_order_m.

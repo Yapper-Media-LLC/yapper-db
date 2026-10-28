@@ -1,0 +1,8 @@
+-- Applied live via MCP.
+-- bots_only_in_bots: accounts with the 'bot' badge may post in server channels only when the channel name contains
+--   "bot", in every server (was HQ only). Yapper's own bots exempt. DMs/groups unaffected.
+-- mod_mark_bot: fixed malformed array append (coalesce(badges,'{}'::text[]) || array['bot']).
+-- bot_signals + detect_bot_replies trigger (after insert on messages): replying to another user's command
+--   (^[!,.?$/;>%+-][A-Za-z]) within 2 s, 5 times within an hour, auto-marks the account as a bot
+--   (mod_log 'marked_bot', actor null). Staff and Yapper's own bots exempt.
+-- rich (a1754d7b-…) marked as a bot by hand.

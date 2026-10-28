@@ -1,0 +1,3 @@
+-- Applied live via MCP. discovery_visits (day, user_id) + discovery_seen() / discovery_reach() (people who opened
+-- Discovery in the last 7 days) + discovery_rank_boosted(sid) (rank with one more boost). Powers the perk chips on the Promote tab.
+-- Update: discovery_reach() returns null until a full 7 days are counted; site_user_count() for the "N+ people on Yapper" chip.

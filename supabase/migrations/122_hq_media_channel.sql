@@ -1,0 +1,5 @@
+-- Applied live via MCP (hq_media_channel_plus_bypass).
+-- Yapper HQ: #general is text only (no_images), new #media right under it with a 5 minute slowmode.
+-- no_images_channel(): in HQ only (app_settings.default_server_id), Yapper Plus members (plus_until > now())
+-- can post media anyway; audio links now count as media too. HQ error: "Media goes in #media here. Yapper Plus
+-- members can post it in any channel." Other servers keep the old message and no Plus bypass.

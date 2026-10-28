@@ -1,0 +1,7 @@
+-- In-house bots (Welcomer, Helper, Levels), applied live on Oct 14. Flag: bots.
+-- Tables: bot_accounts (bot -> the account it posts as), server_bots (per-server on/off + config),
+-- server_xp, bot_afk. Functions: set_server_bot, bot_id, bot_say (sets yapper.bot so the send
+-- guards skip it), bot_welcome (trigger on server_members), bot_levels, bot_helper, bot_on_message
+-- (trigger on messages). message_slowmode / raid_guard / automod / perm_guard / block_server_timeouts
+-- return early when current_setting('yapper.bot') = '1'.
+-- Also: no_bad_names lets you change only the capitalisation of a name you already hold.

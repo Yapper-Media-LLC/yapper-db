@@ -1,0 +1,7 @@
+-- Applied live.
+-- bot_visible_channels(bid, sid default null): channels a bot can see (private ones via bot_channel_visible),
+--   with type, category (id, name, position) and position, in sidebar order. Service role only.
+--   Used by GET /api/bot/v1/servers/:id/channels and GET /api/bot/v1/channels.
+-- bot_channel_visible: execute revoked from anon/authenticated (only security-definer functions and the API use it).
+-- bot_push: every event payload now carries channel_id and server_id (null when not in a channel / in a DM);
+--   channel_id is looked up from message_id, server_id from the channel, when missing.

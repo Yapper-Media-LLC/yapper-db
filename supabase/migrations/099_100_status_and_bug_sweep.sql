@@ -1,0 +1,7 @@
+-- Applied live via MCP (2026-10-15 bug sweep).
+-- 099: presence.pref + set_status_pref / my_status_pref; heartbeat obeys the account's chosen status
+--      (Invisible / DND on one device applies to every tab and device).
+-- 100: post_marks so deleting a message no longer resets slowmode or the 6-hour invite limit;
+--      message_edit_guard refuses edits while timed out (site or server);
+--      template_by_code RPC + server_templates readable only by their creator (and admins);
+--      storage "sounds: read" limited to your own folder (public links still play).

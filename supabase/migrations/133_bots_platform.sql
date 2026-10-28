@@ -1,0 +1,7 @@
+-- Applied live.
+-- Per-server look for built-in bots (flag builtin_bot_look): server_bots.config look_name / look_avatar.
+--   set_bot_look(sid, bot, name); set_bot_look_avatar(sid, bot, path) + server_perm_as(uid, sid, perm) for /api/bots/look (service role);
+--   server_bot_looks(sid) for members; set_server_bot keeps the stored look keys (clients can't set the picture path).
+-- Bot avatars: bots.avatar_path mirrors the bot profile's picture (already uploaded through the image check).
+-- Bot tags (flag bot_tags): profiles.discriminator (4 digits, protected column), bots.tag, free_bot_tag(name),
+--   is_staff_username(name). Tagged bots get username name_1234 and show as name #1234.

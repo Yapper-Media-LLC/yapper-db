@@ -1,0 +1,12 @@
+{
+  "name": "yapper-db",
+  "private": true,
+  "description": "Yapper's database migrations, the access rules dump and the SQL tests that check them. Runs in PGlite, no Supabase needed.",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/sql/run.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8"
+  }
+}

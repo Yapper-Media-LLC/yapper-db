@@ -1,0 +1,4 @@
+-- Applied live via MCP. Sending files (flag `files`, test): messages.attachment_name / attachment_size,
+-- locked on edit by message_edit_guard. Uploads: .zip/.txt/.pdf into attachments only; the scan
+-- (lib/server/media.ts zipProblem) refuses zips with programs (.exe, .bat, .scr, .ps1, .lnk…), zips inside zips and
+-- password-protected zips, checks PDFs are PDFs, and applies the 10 MB / 100 MB (Plus) limit. .jar is allowed.

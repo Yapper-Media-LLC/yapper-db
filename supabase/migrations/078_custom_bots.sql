@@ -1,0 +1,2 @@
+-- Custom bots (people's own bot accounts, marked by staff with the 'bot' badge via mod_mark_bot) may only post
+-- in #bots on Yapper HQ (trigger bots_only_in_bots on messages). Applied live Oct 14.

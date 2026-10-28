@@ -1,0 +1,9 @@
+-- Applied live via MCP (migration "boost_tiers").
+-- Promoted row: promo_slots() = 3 (all shown, no rotation).
+-- Boosts now come in tiers: server_promotions.mult in (2, 4, 8), default 4 (old $7.99 boosts became ×4).
+--   discovery_order_m(q, extra, extra_mult): sorted by members × best live multiplier (no more fixed lift slots).
+--   discovery_order(q, extra) wraps it. discovery_rank_tiers(sid) -> {now, x2, x4, x8, mult} for the Promote tab.
+--   book_promotion(..., p_mult) 7-arg (service role only); same tier running = extends. 6-arg version = ×4.
+--   admin_boost_server(sid, days, mult). promo_availability adds boost_mult, boost_until.
+-- Stripe refs: boost2_<sid>, boost4_<sid> (old boost_ = ×4), boost8_<sid>, promo_<sid>.
+-- The webhook checks amount_total against the prices in lib/promo.ts, so a cheaper link can't buy a bigger tier.

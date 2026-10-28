@@ -1,0 +1,5 @@
+-- Applied live. Row security on staff tables called is_site_admin()/is_site_mod()/is_staff()/auth.uid() once per row.
+-- Wrapped them in (select ...) so Postgres runs them once per query. Handled reports: 1212 ms -> 13 ms. Mod log: 66 ms -> 8 ms.
+-- Tables: reports, site_bans, messages (mod delete), emojis, media_scans, mod_notes, online_time, site_admins,
+-- site_moderators, verification_requests, server_templates, mod_log, user_warnings, bug_reports, staff_votes,
+-- staff_vote_ballots. Server-mod report policy now skips server_perm() for staff.

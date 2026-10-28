@@ -1,0 +1,22 @@
+name: SQL tests
+
+# Runs every migration into PGlite (real Postgres in WebAssembly) and then the stage tests against the
+# row-level-security rules. No database, no keys: the whole run is self-contained.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  sql:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: node tests/sql/run.mjs

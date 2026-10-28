@@ -1,0 +1,9 @@
+-- Applied live. Several ticket panels per server (2 free, 10 with Tickets+).
+-- config.panels = [{id, name, panel_channel_id, panel_message_id, category_id, log_channel_id, support_role_id, welcome}]
+-- Old single-panel configs still work (read as one panel with id 'main').
+-- channels.ticket_panel: which panel a ticket came from (its log channel is used on close).
+-- ticket_panel_cfg(cfg, pid), open_ticket(sid, topic, pid), post_ticket_panel(sid, pid); 2-arg versions call these with null.
+-- open_ticket: max_open per person (default 2, up to 3 free, 10 Plus); channel name from the panel name when there are several.
+--   Custom welcome: {user} is replaced, otherwise the mention goes in front (no more "Hi @x! Hi!").
+-- message_defaults: created_at := clock_timestamp() (was now()), so messages made in one transaction keep their order.
+-- Also: logger_messages skips private channels unless the log channel is private; giveaway_end edits the post to GIVEAWAY ENDED.

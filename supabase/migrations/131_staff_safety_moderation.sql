@@ -1,0 +1,14 @@
+-- Applied live. All behind feature flags (test cohort first).
+-- staff_2fa: staff_mfa_ok() (flag off, or JWT aal = aal2) is now part of is_site_admin() and is_site_mod(),
+--   so staff powers need a session that passed 2FA. my_staff_security() tells the app whether to show the gate.
+-- staff_reauth: table staff_reauth; staff_reauth(pw) checks the password (5 wrong = 10 min wait);
+--   require_staff_reauth() (ok in the last 5 min) is called by site_ban(wipe), admin_shutdown_server(on),
+--   staff_takedown_server(on), mod_ban_many, mod_purge_messages.
+-- server_takedown: staff_takedown_server(sid, why, suspend_owner, p_on), staff_find_servers(q), staff_lift_suspension(uid);
+--   servers.takedown_prev_discoverable / takedown_by; mod_guard limits: takedown 5/h, purge 20/h.
+-- account_standing: account_suspensions table; standing_tier(uid), my_standing(), standing_guard(action, sid, other);
+--   enforced in not_site_banned() (messages, reactions, servers, server_members, friendships) and get_or_create_dm().
+--   Active warning = last 90 days. 1 limited (DM friends only, no links), 2 very limited (no DMs/joins/friend requests),
+--   3+ or a staff suspension = suspended (read-only).
+-- New: mod_ban_many(uids, why), mod_purge_messages(uid, hours, why) (the app already called this; it didn't exist).
+-- Fix: admin_verify_bot logged to mod_log.note (no such column) inside a swallowed exception; now logs reason.

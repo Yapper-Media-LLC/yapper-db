@@ -1,0 +1,24 @@
+{
+  "_": "Known IP loggers and link shorteners. Matched on the host and every subdomain, after punycode. Keep in sync with supabase/migrations/276_link_loggers.sql (tests/sql/stage276 checks) and later additions (cocainee.pro: added live with 526).",
+  "loggers": [
+    "grabify.link", "grabify.org",
+    "bmwforum.co", "leancoding.co", "spottyfly.com", "stopify.co", "freegiftcards.co", "joinmy.site", "curiouscat.club",
+    "catsnthings.fun", "catsnthing.com", "mypic.icu", "headshot.monster", "gaming-at-my.best", "progaming.monster",
+    "yourmy.monster", "screenshare.host", "imageshare.best", "screenshot.best", "gamingfun.me", "fortnitechat.site",
+    "fortnight.space", "lovebird.guru", "trulove.guru", "dateing.club", "otherhalf.life", "shrekis.life", "datasig.io",
+    "datauth.io", "sportshub.bar", "locations.quest", "quickmessage.us", "photospace.life",
+    "xn--yotu-1ra.be", "xn--yutube-wxa.com", "xn--discrd-zxa.com", "xn--disordapp-s3a.com", "xn--minecrft-5za.com",
+    "iplogger.org", "iplogger.com", "iplogger.ru", "iplogger.co", "iplogger.info", "iplogger.cc", "iplogger.net",
+    "2no.co", "yip.su", "iplis.ru", "ipgrabber.ru", "ipgraber.ru", "ipgraber.com", "ipgrab.org", "ezstat.ru", "wl.gl",
+    "blasze.com", "blasze.tk", "ps3cfw.com", "urlto.me", "ip-tracker.org", "whatstheirip.com", "canarytokens.com",
+    "cocainee.pro"
+  ],
+  "shorteners": [
+    "bit.ly", "bitly.com", "bit.do", "j.mp", "tinyurl.com", "tiny.cc", "tiny.one", "cutt.ly", "is.gd", "v.gd", "da.gd",
+    "rb.gy", "shorturl.at", "shorturl.com", "ow.ly", "buff.ly", "rebrand.ly", "t.ly", "s.id", "bl.ink", "short.io",
+    "short.gy", "lnkd.in", "goo.su", "clck.ru", "qr.ae", "goo.gl", "t.co", "tr.im", "adf.ly", "shorte.st", "ouo.io",
+    "ouo.press", "bc.vc", "exe.io", "linkvertise.com", "link-to.net", "u.to", "x.co", "x.gd", "soo.gd", "qrco.de",
+    "dub.sh", "zws.im", "ift.tt", "trib.al", "vk.cc", "reurl.cc", "ppt.cc", "pse.is", "kutt.it", "surl.li", "snip.ly",
+    "tny.im", "shrtco.de", "cli.gs", "budurl.com", "po.st", "su.pr", "gg.gg", "urlz.fr", "t2m.io", "y2u.be"
+  ]
+}

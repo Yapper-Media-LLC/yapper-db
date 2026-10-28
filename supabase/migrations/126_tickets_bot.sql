@@ -1,0 +1,7 @@
+-- Applied live via MCP. Tickets bot (account tickets@yapper.website "Ticketing", shown as Tickets; bot key 'tickets').
+-- server_bots config: panel_channel_id, panel_message_id (set by post_ticket_panel), category_id, log_channel_id;
+-- Tickets+ (Bots+): support_role_id (only that role + admins see tickets, up to 10 of its members pinged), welcome, transcript.
+-- open_ticket: uses the picked category, support role, posts a greeting as the bot and an "opened" note in the log.
+-- close_ticket: "closed by" note, and with Tickets+ a transcript (last 200 messages, up to 6 posts) before the channel goes.
+-- post_ticket_panel(sid): posts "🎫 **Need help?**" as the bot; the app shows an Open a ticket button under it.
+-- set_server_bot strips support_role_id / welcome / transcript without Bots+.

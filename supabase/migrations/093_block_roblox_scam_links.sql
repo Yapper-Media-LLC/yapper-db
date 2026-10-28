@@ -1,0 +1,3 @@
+-- Applied live via MCP. blocked_domains += rbxspent.netlify.app. has_adult_link (used for messages, profiles, links,
+-- nicknames) also blocks any link whose host contains roblox/robux/rbx that isn't Roblox's own domains
+-- (roblox.com, rbxcdn.com, rblx.co, roblox.cn, robloxdev.cn). bloxd.io and yapper invite codes are unaffected.

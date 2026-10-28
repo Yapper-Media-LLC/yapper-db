@@ -1,0 +1,4 @@
+-- Applied live via MCP (boost_tier_floors_fixed + small edit). discovery_order_m boost score =
+--   greatest(members * mult, floor + 0.5), floor = member_count of the unboosted server at #99 (×2), #49 (×4), #19 (×8),
+-- so Boost lands around #100 or better, Super Boost #50, Mega Boost #20, whatever the server size.
+-- Keep this and the member-minimum rule (110) when editing discovery_order_m.

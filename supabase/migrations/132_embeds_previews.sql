@@ -1,0 +1,8 @@
+-- Applied live.
+-- messages.embeds jsonb (bot cards, max 5, <= 16 KB, constraint messages_embeds_shape NOT VALID) and
+-- messages.suppress_embeds (the sender hid link previews). messages_content_check now also allows embeds-only messages.
+-- message_defaults: embeds are dropped unless yapper.bot = 1 (only the bot API sets it).
+-- message_edit_guard: people can't change embeds; only the author can flip suppress_embeds; edits to embeds mark edited.
+-- bot_api_send(bid, cid, body, reply, p_embeds), bot_api_edit(bid, mid, body, p_embeds, set_embeds): service role only;
+--   embeds need flag bot_embeds for the channel's server. The API checks shape and picture hosts first (lib/embeds.ts).
+-- link_previews(url, data, fetched_at): oEmbed cache for /api/embed (hits 7 days, misses 1 day).

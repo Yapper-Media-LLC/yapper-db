@@ -1,0 +1,3 @@
+-- Applied live via MCP. Yapper staff (admins + moderators, is_staff_user) can't be banned from servers
+-- (trigger server_bans_no_site_admins now checks is_staff_user), and join_server / join_public_server skip the
+-- server-ban, lock, discoverable and 100-server checks for staff, so existing bans no longer stop them. Kicks still work.

@@ -1,0 +1,7 @@
+-- Applied live via MCP. Plus tiers (part of Bots+, server_plus_on) for the new bots:
+--   Logger+    : member_channel_id (joins/leaves/bans/timeouts/roles to their own channel, via bot_log_kind('members', …)),
+--                ignore (channel ids never logged, up to 25).
+--   Starboard+ : emoji (any one emoji instead of ⭐), self_star (author's own reaction counts), ignore (channels skipped).
+--   Giveaways+ : 20 winners and 30 days (free: 3 winners, 7 days, with a note when capped), required_role_id (only
+--                members with that role can win, checked when the winner is picked).
+-- set_server_bot strips these keys when the server has no Bots+, and caps ignore at 25 and emoji at one.
