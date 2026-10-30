@@ -1,7 +1,10 @@
 name: SQL tests
 
-# Runs every migration into PGlite (real Postgres in WebAssembly) and then the stage tests against the
-# row-level-security rules. No database, no keys: the whole run is self-contained.
+# Two suites, no keys and no network access to Yapper:
+# - migrations: every migration replayed into PGlite (real Postgres in WebAssembly), then the stage tests, each
+#   checking its migration as it shipped.
+# - live: the schema-only dump of the live database (schema/) restored into Postgres 17, then the policy tests
+#   against the real functions and policies.
 on:
   push:
   pull_request:
@@ -10,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  sql:
+  migrations:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -20,3 +23,25 @@ jobs:
           node-version: 22
       - run: npm install --no-audit --no-fund
       - run: node tests/sql/run.mjs
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17.8
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 2s --health-retries 30
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: node tests/sql/live/run.mjs
