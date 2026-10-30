@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-30",
+  "server_version": "17.11",
+  "tables": 221,
+  "columns": 1598,
+  "functions": 1127,
+  "security_definer": 973,
+  "constraints": 825,
+  "indexes": 356,
+  "triggers": 263,
+  "policies": 185,
+  "sequences": 3,
+  "enums": 0,
+  "views": 0,
+  "live_md5": {
+    "functions_md5": "e9d829dc924d252dd97858cc25febfed",
+    "policies_md5": "99b3f62c19a9bd564bd2a5f175bb5afe"
+  }
+}

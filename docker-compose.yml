@@ -1,0 +1,33 @@
+# Restores the live schema dump into Postgres and runs the policy tests against it:
+#   docker compose up --abort-on-container-exit --exit-code-from tests      (or just ./run-tests.sh)
+# Postgres 17 like the live database (live: Supabase's 17.11 build; 17.8 is the newest official image we pin here).
+services:
+  db:
+    image: postgres:17.8
+    environment:
+      POSTGRES_PASSWORD: postgres
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+  tests:
+    image: node:22-slim
+    depends_on:
+      db:
+        condition: service_healthy
+    working_dir: /repo
+    volumes:
+      - .:/repo
+      - node_modules:/repo/node_modules
+    environment:
+      PGHOST: db
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      npm_config_update_notifier: "false"
+    # Extra arguments (docker compose run --rm tests --stages) go to the test runner.
+    entrypoint: ["sh", "-c", "npm install --no-audit --no-fund --loglevel=error && exec node tests/sql/live/run.mjs \"$$@\"", "--"]
+volumes:
+  node_modules:

@@ -1,0 +1,4 @@
+{
+  "about": "Stage tests (tests/sql/stageNN.test.mjs) that also run unchanged against the live schema. Most stage tests can't: they put a stand-in in place of one of our functions, or re-run their migration (which rewrites the rules under test), so they check the migration as it shipped and stay in the PGlite suite; others check behaviour a later migration changed. stage205/287/293/591 also pass but only check flag rows, not access rules. `node tests/sql/live/run.mjs --stages` lists every stage test and what happens with it.",
+  "stages": ["stage07.test.mjs"]
+}
