@@ -49,8 +49,18 @@ await admin.query(`create database ${TEMPLATE}`);
   const standins = [join(root, 'standins', 'supabase.sql'), join(root, 'public-db', 'standins', 'supabase.sql')].find((f) => existsSync(f));
   const files = [standins,
     ...readdirSync(join(root, 'schema')).filter((f) => /^\d\d-.*\.sql$/.test(f)).sort().map((f) => join(root, 'schema', f))];
+  // The dump comes from Postgres 17. On 16 the only thing that doesn't restore is the MAINTAIN privilege (new in 17)
+  // in the grants file; it has no bearing on who can read what, so it is dropped there with a note. Anything older
+  // than 16 is refused up front instead of failing halfway with a confusing error.
+  const major = parseInt((await db.query('show server_version')).rows[0].server_version, 10);
+  if (major < 16) { console.error(`Postgres ${major} is too old for the live schema: use 17 (./run-tests.sh gives you one in Docker) or 16.`); process.exit(1); }
   for (const f of files) {
-    try { await db.query(readFileSync(f, 'utf8')); }
+    let sql = readFileSync(f, 'utf8');
+    if (major < 17 && /06-grants\.sql$/.test(f) && /\bMAINTAIN\b/i.test(sql)) {
+      sql = sql.replace(/\bMAINTAIN\s*,\s*/gi, '').replace(/,\s*MAINTAIN\b/gi, '').replace(/^\s*grant\s+MAINTAIN\s+on[^;]*;\s*$/gim, '');
+      console.log(`Postgres ${major}: the MAINTAIN privilege (Postgres 17 only) was left out of ${f.slice(root.length + 1)}; it does not affect any access rule.`);
+    }
+    try { await db.query(sql); }
     catch (e) { console.error(`Restore failed in ${f.slice(root.length + 1)}: ${e.message}`); process.exit(1); }
   }
   const n = (await db.query(`select

@@ -10,6 +10,17 @@ What is here:
 - `supabase/migrations/` is every migration ever applied, in order.
 - `tests/sql/` is the test suite. `tests/sql/live/` runs against the live schema; the `stageNN` tests replay migrations (see below).
 
+## Which command tests what
+
+| command | what it checks | needs |
+|---|---|---|
+| `./run-tests.sh` | the live rules: restores the schema-only dump of the production database into a real Postgres 17 and runs the privacy tests against the real functions and policies, no stand-ins for our code | Docker |
+| `npm run test:live` | the same live suite against a Postgres you run yourself | Postgres 17, or 16 (one Postgres 17 only privilege is skipped with a note) |
+| `npm test` | each migration as it shipped, replayed in PGlite. Past stage 24 this uses stand-ins and does not reproduce production; see "The migration tests" below. It is not the live check | Node only |
+
+If you want to know whether staff can read DMs on the live rules, run the first or the second. If the restore stops with
+`unrecognized privilege type "maintain"`, your Postgres is older than 16: use the Docker route.
+
 ## Run the tests against the live schema
 
 Needs Docker, nothing else:
